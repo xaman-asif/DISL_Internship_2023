@@ -16,6 +16,7 @@ public class Solution {
       } catch (Exception e) {
         System.out.println("Invalid");
       }
+      testCases--;
     }
   }
 }
