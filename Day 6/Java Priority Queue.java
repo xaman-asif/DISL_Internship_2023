@@ -33,7 +33,7 @@ class Student implements Comparable<Student> {
 
   public int compareTo(Student s) {
     if (this.cgpa == s.cgpa) {
-      if (this.name.compareToIgnoreCase(s.name) == 0) {
+      if (this.name.compareTo(s.name) == 0) {
         if (this.id == s.id) {
           return 0;
         } else if (this.id > s.id) {
@@ -42,7 +42,7 @@ class Student implements Comparable<Student> {
           return -1;
         }
       } else {
-        return this.name.compareToIgnoreCase(s.name);
+        return this.name.compareTo(s.name);
       }
     } else if (this.cgpa > s.cgpa) {
       return -1;
