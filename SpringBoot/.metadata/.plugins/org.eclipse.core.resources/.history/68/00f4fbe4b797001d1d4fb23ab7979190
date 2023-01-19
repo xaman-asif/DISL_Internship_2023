@@ -1,0 +1,6 @@
+package io.javabrains.springbootquickstart.courseapi;
+
+@RestController
+public class HelloController {
+	
+}

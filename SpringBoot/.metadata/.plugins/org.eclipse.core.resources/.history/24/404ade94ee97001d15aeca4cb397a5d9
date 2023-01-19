@@ -1,0 +1,10 @@
+package io.javabrains.springbootquickstart.topic;
+
+public class TopicRepository {
+	
+	
+	//getAllTopics()
+	//getTopic(String id)
+	//updateTopic(Topic t)
+	//deleteTopic(String id)
+}
