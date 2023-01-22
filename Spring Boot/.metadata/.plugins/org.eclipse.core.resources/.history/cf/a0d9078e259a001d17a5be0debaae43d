@@ -1,0 +1,5 @@
+package io.javabrains.payload;
+
+public class ResponsePayload {
+
+}

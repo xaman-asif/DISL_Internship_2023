@@ -1,0 +1,5 @@
+package io.javabrains.springbootquickstart.course.requests;
+
+public class CourseUpdateRequest {
+
+}

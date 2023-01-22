@@ -12,6 +12,10 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseRepository;
 	
+//	public Course findTopById(String id) {
+//		return courseRepository.findTopById(id);
+//	}
+	
 //	private List<Course> courses = new ArrayList<>(Arrays.asList(
 //			new Course("Spring", "Spring Framework", "Spring Framework Description"),
 //			new Course("Java", "Core Java", "Core Java Description"),
@@ -29,11 +33,12 @@ public class CourseService {
 		return courseRepository.findById(id).orElse(null);
 	}
 
-	public void addCourse(Course course) {
-		courseRepository.save(course);
+	public Course addCourse(Course course) {
+		System.out.println("Course Added Successfully");
+		return courseRepository.save(course);
 	}
 
-	public void updateCourse(Course course) {
+	public Course updateCourse(Course course) {
 //		for (int i=0; i < topics.size(); i++) {
 //			Topic temp = topics.get(i);
 //			if(temp.getId().equals(id)) {
@@ -41,7 +46,8 @@ public class CourseService {
 //				return;
 //			}
 //		}
-		courseRepository.save(course);
+//		System.out.println("Course Updated Successfully");
+		return courseRepository.save(course);
 	}
 
 	public void deleteCourse(String id) {
