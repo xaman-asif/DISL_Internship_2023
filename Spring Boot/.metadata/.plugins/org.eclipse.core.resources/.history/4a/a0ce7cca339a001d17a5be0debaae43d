@@ -65,7 +65,7 @@ public class CourseController {
 	}
 	
 	@RequestMapping("/courses")
-	public List<Course> getCourse() {
-		return courseService.getAllCourses();
+	public Course getCourse() {
+		return courseService.getCourse(id);
 	}
 }

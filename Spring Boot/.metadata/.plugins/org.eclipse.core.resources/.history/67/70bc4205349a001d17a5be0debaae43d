@@ -60,10 +60,9 @@ public class CourseService {
 		courseRepository.deleteById(id);
 	}
 
-	public List<Course> getAllCourses() {
+	public Course getAllCourses() {
 		List<Course> courses = new ArrayList<>();
-//		courseRepository.findByTopicId(topicId).forEach(courses::add);
-		courseRepository.findAll().forEach(courses::add);
+		courseRepository.findByTopicId(topicId).forEach(courses::add);
 		return courses;
 	}
 }

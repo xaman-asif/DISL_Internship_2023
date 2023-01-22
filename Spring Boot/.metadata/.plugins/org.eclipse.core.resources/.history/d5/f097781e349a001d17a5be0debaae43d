@@ -62,8 +62,7 @@ public class CourseService {
 
 	public List<Course> getAllCourses() {
 		List<Course> courses = new ArrayList<>();
-//		courseRepository.findByTopicId(topicId).forEach(courses::add);
-		courseRepository.findAll().forEach(courses::add);
+		courseRepository.findByTopicId(topicId).forEach(courses::add);
 		return courses;
 	}
 }
