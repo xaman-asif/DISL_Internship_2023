@@ -33,32 +33,13 @@ public class LessonController {
 	//add course & topic to lesson class & save to database
 	@RequestMapping(method=RequestMethod.POST, value="/topics/{topicId}/courses/{courseId}/lesson")
 	public Lesson addLesson(@RequestBody Lesson lesson, @PathVariable String topicId, @PathVariable String courseId) {
-		lesson.setTopic(new Topic(topicId, "", ""));
 		lesson.setCourse(new Course(courseId, "", "", topicId));
 		return lessonService.addLesson(lesson);
 	}
 	
-//	@PutMapping("/update-topic")
-//	public ResponsePayload updateCourse(@RequestBody CourseUpdateRequest request) {
-//		// topicId -> find topic
-//		// if not exists return error
-//		//
-//		
-//		Course course = courseService.findTopById(request.getId());
-//		if(course == null) {
-//			return new ResponsePayload(false, "Course not found");
-//		}
-//		
-//		course.setName(request.getName());
-//		course.setDescription(request.getDescription());
-//		return new ResponsePayload(true, "Course found", courseService.updateCourse(course));
-//	}
-	
 	@RequestMapping(method=RequestMethod.PUT, value="/topics/{topicId}/courses/{courseId}/lesson/{lessonId}")
 	public Lesson updateLesson(@RequestBody Lesson lesson, @PathVariable String topicId, @PathVariable String courseId, @PathVariable String lessonId) {		
-		lesson.setTopic(new Topic(topicId, "", ""));
 		lesson.setCourse(new Course(courseId, "", "", topicId));
-//		System.out.println(course.getName() + " name");
 		return lessonService.updateLesson(lesson);
 	}
 	

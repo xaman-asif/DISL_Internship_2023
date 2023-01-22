@@ -13,9 +13,6 @@ public class Lesson {
 	private String id;
 	private String name;
 	private String description;
-
-	@ManyToOne
-	private Topic topic;
 	
 	@ManyToOne
 	private Course course;
@@ -29,7 +26,6 @@ public class Lesson {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.topic = new Topic(topicId, "", "");
 		this.course = new Course(courseId, "", "", topicId);
 	}
 	
@@ -55,14 +51,6 @@ public class Lesson {
 	
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Topic getTopic() {
-		return topic;
-	}
-
-	public void setTopic(Topic topic) {
-		this.topic = topic;
 	}
 	
 	public Course getCourse() {
