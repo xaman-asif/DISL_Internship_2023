@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.stereotype.Service;
 
 import static com.example.demo.security.ApplicationUserRole.*;
 
@@ -19,6 +20,7 @@ import static com.example.demo.security.ApplicationUserRole.*;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@Service
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -33,8 +35,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable() // TODO: I will teach this in detail in the next section
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                .antMatchers("/api/**").hasRole(STUDENT.name())
+                .antMatchers( "index", "/css/*", "/js/*").permitAll()
+                .antMatchers("/api/v1/**").hasAnyRole(STUDENT.name())
+                .antMatchers("/api/management/**").hasRole(ADMIN.name())
 //                .antMatchers(HttpMethod.DELETE, "/management/api/**").hasAuthority(COURSE_WRITE.getPermission())
 //                .antMatchers(HttpMethod.POST, "/management/api/**").hasAuthority(COURSE_WRITE.getPermission())
 //                .antMatchers(HttpMethod.PUT, "/management/api/**").hasAuthority(COURSE_WRITE.getPermission())
@@ -51,7 +54,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails annaSmithUser = User.builder()
                 .username("annasmith")
                 .password(passwordEncoder.encode("password"))
-//                .roles(STUDENT.name()) // ROLE_STUDENT
+                .roles(STUDENT.name()) // ROLE_STUDENT
                 .authorities(STUDENT.getGrantedAuthorities())
                 .build();
 

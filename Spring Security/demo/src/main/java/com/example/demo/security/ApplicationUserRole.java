@@ -7,8 +7,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.example.demo.security.ApplicationUserPermission.*;
+
 public enum ApplicationUserRole {
-    STUDENT(Sets.newHashSet()),
+    STUDENT(Sets.newHashSet(
+            STUDENT_READ,
+            COURSE_READ
+    )),
     ADMIN(Sets.newHashSet(
             COURSE_READ,
             COURSE_WRITE,
@@ -26,15 +30,21 @@ public enum ApplicationUserRole {
         this.permissions = permissions;
     }
 
-    public Set<ApplicationUserPermission> getPermissions() {
-        return permissions;
+    public Set<String> getPermissions() {
+        return permissions
+                .stream()
+                .map(permission -> {
+                    String[] array = permission.getPermission().split(":");
+                    return (array[0]+"_"+array[1]).toUpperCase();
+                })
+                .collect(Collectors.toSet());
     }
 
     public Set<SimpleGrantedAuthority> getGrantedAuthorities() {
         Set<SimpleGrantedAuthority> permissions = getPermissions()
-                .stream().map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
+                .stream().map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toSet());
-        permissions.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
+        //permissions.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
         return permissions;
     }
 }
