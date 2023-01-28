@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class XmlServlet extends HttpServlet {
 	
@@ -14,8 +15,6 @@ public class XmlServlet extends HttpServlet {
 		System.out.println("XML servlet called");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String username = request.getParameter("userName");
-		out.println("Hello User: " + username);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
