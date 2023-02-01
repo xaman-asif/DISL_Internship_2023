@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.student;
 
 import com.example.demo.requests.CreateStudentRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +45,8 @@ public class StudentService {
     }
 
     public void deleteStudent(Long id) {
+        //
+
         studentRepository.deleteById(id);
     }
 }

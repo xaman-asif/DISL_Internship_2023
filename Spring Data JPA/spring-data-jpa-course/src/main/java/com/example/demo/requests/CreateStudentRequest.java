@@ -7,16 +7,16 @@ import javax.validation.constraints.Size;
 
 public class CreateStudentRequest {
 
-    @NotNull
-    @Size(min = 1)
+//    @NotNull
+//    @Size(min = 1)
     private String firstName;
-    @NotNull
-    @Size(min = 1)
+//    @NotNull
+//    @Size(min = 1)
     private String lastName;
-    @NotNull
-    @Size(min = 1)
+//    @NotNull
+//    @Size(min = 1)
     private String email;
-    @Min(3)
+//    @Min(3)
     private long age;
 
     public String getFirstName() {
