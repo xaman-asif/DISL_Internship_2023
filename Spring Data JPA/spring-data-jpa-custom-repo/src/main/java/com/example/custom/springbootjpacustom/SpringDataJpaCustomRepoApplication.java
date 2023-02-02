@@ -1,4 +1,4 @@
-package com.example.jpa.springdatajpacustomrepo;
+package com.example.custom.springbootjpacustom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
