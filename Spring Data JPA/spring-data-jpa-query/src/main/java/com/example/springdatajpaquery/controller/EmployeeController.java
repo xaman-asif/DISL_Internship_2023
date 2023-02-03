@@ -24,19 +24,19 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
-    @GetMapping("/employees/{firstname}")
+    @GetMapping("/employees/firstname/{firstname}")
     public List<Employee> findByFirstName(@PathVariable("firstname") String firstname) {
         return employeeRepository.findByFirstName(firstname, Sort.by("department").descending());
+    }
+
+    @GetMapping("/employees/firstname/{firstname}/{department}")
+    public List<Employee> findByFirstNamewithIndex(@PathVariable("firstname") String firstname, @PathVariable("department") String department) {
+        return employeeRepository.findByFirstNamewithIndexParam(firstname, department);
     }
 
     @GetMapping("/employees/lastname/{lastname}")
     public List<Employee> findByLastName(@PathVariable("lastname") String lastname) {
         return employeeRepository.findByLastName(lastname);
-    }
-
-    @GetMapping("/employees/{firstname}/{department}")
-    public List<Employee> findByFirstNamewithIndex(@PathVariable("firstname") String firstname, @PathVariable("department") String department) {
-        return employeeRepository.findByFirstNamewithIndexParam(firstname, department);
     }
 
     @GetMapping("/employees/lastname/{lastname}/{department}")
