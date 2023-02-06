@@ -14,6 +14,12 @@ public class EmployeeSpecification {
         });
     }
 
+    public static Specification<Employee> containsFirstName(String firstname) {
+        return ((root, criteriaQuery, criteriaBuilder) -> {
+            return criteriaBuilder.like(root.get(Employee_.FIRSTNAME), "%" + firstname + "%");
+        });
+    }
+
     public static Specification<Employee> containsLastName(String lastname){
         return ((root, criteriaQuery, criteriaBuilder) -> {
             return criteriaBuilder.like(root.get(Employee_.LASTNAME),"%"+ lastname + "%");

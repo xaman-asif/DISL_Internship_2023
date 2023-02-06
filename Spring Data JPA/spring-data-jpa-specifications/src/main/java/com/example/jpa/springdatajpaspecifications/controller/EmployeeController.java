@@ -33,12 +33,24 @@ public class EmployeeController {
             @PathVariable("firstname") String firstname,
             @PathVariable("department") String department
     ) {
-        return employeeRepository.findAll(where(hasFirstName(firstname)
-                .and(EmployeeSpecification.hasDepartment(department))));
+        return employeeRepository.findAll(
+                where(EmployeeSpecification.hasFirstName(firstname)
+                        .and(EmployeeSpecification.hasDepartment(department))
+                    )
+        );
     }
 
-    @GetMapping("/{lastname}")
-    public List<Employee> findByFirstnameAndDepartment(@PathVariable("lastname") String lastname){
-        return employeeRepository.findAll(containsLastName(lastname));
+    @GetMapping("/search/lastname/{lastname}")
+    public List<Employee> searchByLastName(@PathVariable("lastname") String lastname) {
+        return employeeRepository.findAll(
+                EmployeeSpecification.containsLastName(lastname)
+        );
+    }
+
+    @GetMapping("/search/firstname/{firstname}")
+    public List<Employee> searchByFirstName(@PathVariable("firstname") String firstname) {
+        return employeeRepository.findAll(
+                EmployeeSpecification.containsFirstName(firstname)
+        );
     }
 }

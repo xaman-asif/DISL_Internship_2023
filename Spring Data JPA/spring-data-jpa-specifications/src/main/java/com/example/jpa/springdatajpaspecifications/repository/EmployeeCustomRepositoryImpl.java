@@ -19,17 +19,17 @@ public class EmployeeCustomRepositoryImpl implements EmployeeCustomRepository {
 
     @Override
     public List<Employee> findByFirstNameAndDepartment(String firstname, String department) {
-        CriteriaBuilder cb=entityManager.getCriteriaBuilder();
-        CriteriaQuery cq=cb.createQuery(Employee.class);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
 
-        Root<Employee> employee=cq.from(Employee.class);
+        Root<Employee> employee = criteriaQuery.from(Employee.class);
 
-        Predicate firstNamePredicate = cb.equal(employee.get(Employee_.FIRSTNAME), firstname);
-        Predicate departmentPredicate=cb.equal(employee.get(Employee_.DEPARTMENT),department);
+        Predicate firstNamePredicate = criteriaBuilder.equal(employee.get(Employee_.FIRSTNAME), firstname);
+        Predicate departmentPredicate = criteriaBuilder.equal(employee.get(Employee_.DEPARTMENT),department);
 
-        cq.where(firstNamePredicate,departmentPredicate);
+        criteriaQuery.where(firstNamePredicate,departmentPredicate);
 
-        TypedQuery<Employee> query=entityManager.createQuery(cq);
+        TypedQuery<Employee> query = entityManager.createQuery(criteriaQuery);
 
         return query.getResultList();
     }
